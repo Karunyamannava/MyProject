@@ -1,0 +1,215 @@
+/* Global styles */
+body {
+    background-color: #fffefe;
+    font-family: Arial, sans-serif;
+}
+
+.container-large {
+    max-width: 1500px;
+    margin: 140px auto 0;
+    padding: 20px;
+    background-color: #fffefe;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 30px;
+}
+
+.Youtube-img {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.Youtube-img img{
+    max-width: 300px;
+    height: auto;
+}
+
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+/* Navigation bar styles */
+.navbar {
+    background-color: #333;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.navbar a {
+    float:right;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 20px 30px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.navbar a.active {
+    background-color: #4CAF50;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar .logo {
+    position: absolute;
+    left: 3px;
+    top:45%;
+    transform: translateY(-30%);
+    height: 50px;
+    width:170px;
+}
+
+.navbar .right {
+    margin-right: 20px;
+
+}
+
+.navbar img {
+    height: 40px;
+    width: auto;
+}
+
+.container {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fdf7f7;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+.center-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+.center-image img {
+    max-width: 50%;
+    height: auto;
+}
+
+
+
+.container label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.container input[type="text"] {
+    width: 90%; /* Take up the full width of the container */
+    padding: 10px;
+    font-size: larger;
+}
+
+.container button[type="submit"] {
+    margin-top: 10px;
+}
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.container p {
+    margin-bottom: 20px;
+}
+
+/* Button styles */
+button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Comment box styles */
+.comment-box {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.comment-number {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Animations */
+@keyframes slide-in {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

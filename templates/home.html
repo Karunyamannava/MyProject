@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YouTube Comment Sentiment Analysis</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-left">
+            <div class="logo">
+                <a href="https://www.youtube.com" target="_blank">
+<img src="{{ url_for('static', filename='Youtube1.jpeg') }}" href="home.html">
+                </a>
+            </div>
+        </div>
+        
+        <div class="navbar-right">
+            <a class="active" href="#">Home</a>
+            <a href="{{ url_for('index') }}">Analyze</a>
+        </div>
+    </div>
+
+    <h1>YouTube Comment Sentiment Analysis</h1>
+
+    <div class="center-image">
+        <img src="{{ url_for('static', filename='Youtube.jpg') }}" alt="Sentiment Analysis Pie Chart">
+    </div>
+
+    <div class="container">
+        <p>YouTube comments sentiment analysis refers to the process of analyzing and classifying the sentiments expressed in comments posted on YouTube videos.</p>
+        <p>It involves using natural language processing and machine learning techniques to determine whether comments are positive, negative, or neutral.</p>
+        <p>This analysis can provide valuable insights into audience reactions and help content creators and marketers understand the sentiment surrounding their videos.</p>
+    </div>
+</body>
+</html>

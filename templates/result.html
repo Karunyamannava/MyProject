@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sentiment Analysis Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <div class="navbar">
+        <div class="navbar-right">
+            <a class="active" href="http://127.0.0.1:5000/#">Home</a>
+        </div>
+    </div>
+    <h1>Sentiment Analysis Results</h1>
+
+    <div class="center">
+        <h2>Pie Chart</h2>
+        <div id="pieChart"></div>
+    </div>
+    
+
+    <div class="result-container">
+        <h2>F1 Score and Accuracy</h2>
+        <p>Total comments analyzed: {{ total }}</p>
+        <p>Positive comments: {{ positive }} ({{ '%.2f' % (100 * positive / total) }}%)</p>
+        <p>Negative comments: {{ negative }} ({{ '%.2f' % (100 * negative / total) }}%)</p>
+        <p>Neutral comments: {{ neutral }} ({{ '%.2f' % (100 * neutral / total) }}%)</p>
+        <p>F1 score for positive comments: {{ '%.2f' % f1_positive }}</p>
+        <p>F1 score for negative comments: {{ '%.2f' % f1_negative }}</p>
+        <p>F1 score for neutral comments: {{ '%.2f' % f1_neutral }}</p>
+        <p>Total F1 score: {{ f1 }}</p>
+        <p>Accuracy: {{ accuracy }}</p>
+    </div>
+
+    <div class="result-container">
+        <h2>Show Comments</h2>
+        <button id="showComments" onclick="showComments()">Show Top and Worst Comments</button>
+
+        <div id="topWorstComments" class="comment-section" style="display: none;">
+            <h2>Positive Comments</h2>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>No.</th>
+                        <th>Comment</th>
+                        <th>Score</th>
+                    </tr>
+                    {% for index, (comment, sign, score) in enumerate(positive_comments[:5], start=1) %}
+                    <tr>
+                        <td>{{ index }}</td>
+                        <td>{{ comment }}</td>
+                        <td class="{{ 'positive' if score > 0 else 'negative' }}">{{ sign }}{{ '%.2f' % score }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <h2>Negative Comments</h2>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>No.</th>
+                        <th>Comment</th>
+                        <th>Score</th>
+                    </tr>
+                    {% for index, (comment, sign, score) in enumerate(negative_comments[-5:], start=1) %}
+                    <tr>
+                        <td>{{ index }}</td>
+                        <td>{{ comment }}</td>
+                        <td class="{{ 'positive' if score > 0 else 'negative' }}">{{ sign }}{{ '%.2f' % score }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        <button onclick="goBack()">Go Back</button>
+    </div>
+    <script>
+        // Generate data for the pie chart
+        var labels = ['Positive', 'Negative', 'Neutral'];
+        var values = [{{ positive }}, {{ negative }}, {{ neutral }}];
+    
+        // Create the pie chart trace
+        var trace = {
+            labels: labels,
+            values: values,
+            type: 'pie'
+        };
+    
+        // Set layout options for the pie chart
+        var layout = {
+            title: 'Sentiment Distribution',
+            showlegend: true,
+            height: 600,
+            width: 700,
+            scene: {
+                aspectratio: { x: 1, y: 1, z: 1 },
+                camera: {
+                    eye: {
+                        x: 1.2,
+                        y: 1.2,
+                        z: 1.2
+                    }
+                }
+            },
+            displayModeBar: false // Hide the Plotly logo and toolbar
+        };
+    
+        // Create the data array
+        var data = [trace];
+    
+        // Render the pie chart using Plotly
+        Plotly.newPlot('pieChart', data, layout);
+    </script>
+    
+    <script>
+        function showComments() {
+            document.getElementById("showComments").style.display = "none";
+            document.getElementById("topWorstComments").style.display = "block";
+        }
+
+        function goBack() {
+            window.location.href = "{{ url_for('index') }}";
+        }
+    </script>
+</body>
+</html>
