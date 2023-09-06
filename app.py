@@ -37,7 +37,7 @@ def result():
         video_id = url.split('=')[1]
 
         # create YouTube API client
-        youtube = build('youtube', 'v3', developerKey='AIzaSyCqozWcXN7tQdlUYjDjDjngijvLKks-BE4')
+        youtube = build('youtube', 'v3', developerKey='************')//use your youtube developer key 
 
         # get comments from YouTube video
         comments = []
